@@ -1,6 +1,15 @@
 #include <iostream>
 using namespace std;
 
+void clear_screen() {
+#ifdef _WIN32
+	std::system("cls");
+#else
+	// Assume POSIX
+	std::system("clear");
+#endif
+}
+
 int main()
 {
 	// Variable to hold temperature entered
@@ -73,7 +82,7 @@ int main()
 		cout << "\nEnter y for yes or n for no: ";
 		cin >> Again;
 		if (tolower(Again) == 'y')
-			system("cls");
+			clear_screen();
 	} while (tolower(Again) == 'y'); //allows program to repeat as
 										//long as user would like to
 }
